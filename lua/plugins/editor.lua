@@ -112,6 +112,9 @@ return {
 				winblend = 0,
 				mappings = {
 					n = {},
+					i = {
+						["<CR>"] = actions.select_tab,
+					},
 				},
 			})
 			opts.pickers = {

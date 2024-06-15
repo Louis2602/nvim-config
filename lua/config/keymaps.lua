@@ -1,6 +1,8 @@
 local keymap = vim.keymap
 local opts = { noremap = true, silent = true }
 
+keymap.set("i", "jj", "<ESC>")
+
 keymap.set("n", "x", '"_x')
 
 -- Increment/decrement
@@ -16,8 +18,7 @@ keymap.set("n", "<Leader>q", ":quit<Return>", opts)
 keymap.set("n", "<Leader>Q", ":qa<Return>", opts)
 
 -- File explorer with NvimTree
-keymap.set("n", "<Leader>f", ":NvimTreeFindFile<Return>", opts)
-keymap.set("n", "<Leader>t", ":NvimTreeToggle<Return>", opts)
+keymap.set("n", "<Leader>e", ":NvimTreeToggle<Return>", opts)
 
 -- Tabs
 keymap.set("n", "te", ":tabedit")
