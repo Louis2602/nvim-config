@@ -40,7 +40,7 @@ require("lazy").setup({
 	dev = {
 		path = "~/.ghq/github.com",
 	},
-	checker = { enabled = true },
+	checker = { enabled = true, notify = false },
 	performance = {
 		cache = {
 			enabled = true,

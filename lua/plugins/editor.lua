@@ -113,7 +113,7 @@ return {
 				mappings = {
 					n = {},
 					i = {
-						["<CR>"] = actions.select_tab,
+						["<CR>"] = actions.select_tab_drop,
 					},
 				},
 			})

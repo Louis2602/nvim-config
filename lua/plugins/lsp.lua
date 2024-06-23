@@ -15,6 +15,7 @@ return {
 				"black",
 				"mypy",
 				"ruff",
+				"gopls",
 			})
 		end,
 	},

@@ -29,7 +29,7 @@ return {
 		opts = {
 			options = {
 				mode = "tabs",
-				show_buffer_close_icons = true,
+				show_buffer_close_icons = false,
 				show_close_icon = false,
 			},
 		},
@@ -59,9 +59,20 @@ return {
 		},
 	},
 	{
+		"nvim-neo-tree/neo-tree.nvim",
+		enabled = false,
+	},
+	{
 		"nvim-tree/nvim-tree.lua",
+		dependencies = {
+			"nvim-tree/nvim-web-devicons",
+		},
 		config = function()
 			require("nvim-tree").setup({
+				open_on_tab = false,
+				hijack_netrw = true,
+				hijack_cursor = false,
+				update_cwd = true,
 				on_attach = function(bufnr)
 					local api = require("nvim-tree.api")
 
@@ -79,7 +90,7 @@ return {
 					api.config.mappings.default_on_attach(bufnr)
 
 					-- custom mappings
-					vim.keymap.set("n", "<CR>", api.node.open.tab, opts("Tab"))
+					vim.keymap.set("n", "t", api.node.open.tab, opts("Tab"))
 				end,
 				actions = {
 					open_file = {
@@ -88,6 +99,8 @@ return {
 				},
 				update_focused_file = {
 					enable = true,
+					ignore_list = {},
+					update_cwd = true,
 				},
 				sort = {
 					sorter = "case_sensitive",
@@ -98,11 +111,38 @@ return {
 				},
 				renderer = {
 					group_empty = true,
+					-- root_folder_modifier = ":t",
+					icons = {
+						glyphs = {
+							default = "",
+							symlink = "",
+							folder = {
+								arrow_open = "",
+								arrow_closed = "",
+								default = "",
+								open = "",
+								empty = "",
+								empty_open = "",
+								symlink = "",
+								symlink_open = "",
+							},
+							git = {
+								unstaged = "",
+								staged = "S",
+								unmerged = "",
+								renamed = "➜",
+								untracked = "U",
+								deleted = "",
+								ignored = "◌",
+							},
+						},
+					},
 				},
 				filters = {
-					dotfiles = true,
+					dotfiles = false,
 					custom = {
 						"node_modules/.*",
+						"^\\.git",
 					},
 				},
 				log = {
@@ -115,10 +155,42 @@ return {
 						watcher = true,
 					},
 				},
+				diagnostics = {
+					enable = true,
+					show_on_dirs = true,
+					icons = {
+						hint = "",
+						info = "",
+						warning = "",
+						error = "",
+					},
+				},
+				git = {
+					enable = true,
+					ignore = true,
+					timeout = 500,
+				},
 			})
 			if vim.fn.argc(-1) == 0 then
 				vim.cmd("NvimTreeFocus")
 			end
 		end,
+	},
+	{
+		"christoomey/vim-tmux-navigator",
+		cmd = {
+			"TmuxNavigateLeft",
+			"TmuxNavigateDown",
+			"TmuxNavigateUp",
+			"TmuxNavigateRight",
+			"TmuxNavigatePrevious",
+		},
+		keys = {
+			{ "<c-h>", "<cmd><C-U>TmuxNavigateLeft<cr>" },
+			{ "<c-j>", "<cmd><C-U>TmuxNavigateDown<cr>" },
+			{ "<c-k>", "<cmd><C-U>TmuxNavigateUp<cr>" },
+			{ "<c-l>", "<cmd><C-U>TmuxNavigateRight<cr>" },
+			{ "<c-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>" },
+		},
 	},
 }
