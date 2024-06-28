@@ -16,6 +16,8 @@ return {
 				"mypy",
 				"ruff",
 				"gopls",
+				"markdownlint",
+				"markdown-toc",
 			})
 		end,
 	},
