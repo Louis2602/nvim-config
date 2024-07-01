@@ -66,7 +66,3 @@ keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left
 keymap.set("n", "<C-j>", function()
 	vim.diagnostic.goto_next()
 end, opts)
-
-vim.keymap.set("n", "<leader><leader>", function()
-	vim.cmd("so")
-end)
