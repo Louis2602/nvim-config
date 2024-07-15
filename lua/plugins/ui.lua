@@ -11,7 +11,7 @@ return {
 
   {
     "rcarriga/nvim-notify",
-    enabled = true,
+    enabled = false,
   },
   -- buffer line
   {
