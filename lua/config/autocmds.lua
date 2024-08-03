@@ -11,3 +11,7 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.wo.conceallevel = 0
   end,
 })
+
+-- Disable yank highlight
+-- vim.api.nvim_command("highlight YP_Yank ctermbg=NONE guibg=NONE")
+-- vim.api.nvim_command('autocmd TextYankPost * lua vim.highlight.on_yank {higroup="YP_Yank", timeout=0}')
