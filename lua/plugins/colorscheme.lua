@@ -1,5 +1,38 @@
 return {
   {
+    "AlexvZyl/nordic.nvim",
+    lazy = false,
+    priority = 1000,
+    config = function()
+      require("nordic").setup({
+        -- Enable bold keywords.
+        bold_keywords = false,
+        -- Enable italic comments.
+        italic_comments = false,
+        -- Enable general editor background transparency.
+        transparent_bg = true,
+        -- Enable brighter float border.
+        bright_border = false,
+        -- Reduce the overall amount of blue in the theme (diverges from base Nord).
+        reduced_blue = true,
+        -- Swap the dark background with the normal one.
+        swap_backgrounds = false,
+        telescope = {
+          -- Available styles: `classic`, `flat`.
+          style = "classic",
+        },
+        leap = {
+          -- Dims the backdrop when using leap.
+          dim_backdrop = false,
+        },
+        ts_context = {
+          -- Enables dark background for treesitter-context window
+          dark_background = true,
+        },
+      })
+    end,
+  },
+  {
     "Mofiqul/vscode.nvim",
     priority = 1000,
     config = function()
@@ -55,37 +88,6 @@ return {
       vim.g.sonokai_transparent_background = "1"
       vim.g.sonokai_enable_italic = "0"
       vim.g.sonokai_style = "andromeda"
-    end,
-  },
-  {
-    "ellisonleao/gruvbox.nvim",
-    priority = 1000,
-    config = function()
-      -- Default options:
-      require("gruvbox").setup({
-        terminal_colors = true, -- add neovim terminal colors
-        undercurl = false,
-        underline = false,
-        bold = false,
-        italic = {
-          strings = false,
-          emphasis = false,
-          comments = false,
-          operators = false,
-          folds = false,
-        },
-        strikethrough = false,
-        invert_selection = false,
-        invert_signs = false,
-        invert_tabline = false,
-        invert_intend_guides = false,
-        inverse = true, -- invert background for search, diffs, statuslines and errors
-        contrast = "", -- can be "hard", "soft" or empty string
-        palette_overrides = {},
-        overrides = {},
-        dim_inactive = false,
-        transparent_mode = true,
-      })
     end,
   },
   {
