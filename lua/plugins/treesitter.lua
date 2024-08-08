@@ -27,6 +27,7 @@ return {
         use_virtual_text = true,
         lint_events = { "BufWrite", "CursorHold" },
       },
+      indent = { enable = true },
     },
     config = function(_, opts)
       require("nvim-treesitter.configs").setup(opts)
