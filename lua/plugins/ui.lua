@@ -23,9 +23,10 @@ return {
     },
     opts = {
       options = {
-        mode = "tabs",
-        show_buffer_close_icons = false,
+        mode = "buffers",
+        show_buffer_close_icons = true,
         show_close_icon = false,
+        show_tab_indicators = false,
       },
     },
   },

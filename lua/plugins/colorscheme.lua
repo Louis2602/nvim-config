@@ -1,5 +1,20 @@
 return {
   {
+    "EdenEast/nightfox.nvim",
+    lazy = false,
+    priority = 1000,
+    config = function()
+      require("nightfox").setup({
+        options = {
+          transparent = true,
+        },
+      })
+
+      -- setup must be called before loading
+      vim.cmd("colorscheme nightfox")
+    end,
+  },
+  {
     "AlexvZyl/nordic.nvim",
     lazy = false,
     priority = 1000,
