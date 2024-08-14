@@ -29,7 +29,7 @@ keymap.set("n", "<C-a>", "gg<S-v>G")
 keymap.set("n", "te", ":tabedit")
 keymap.set("n", "<tab>", ":bnext<Return>", opts)
 keymap.set("n", "<s-tab>", ":bprev<Return>", opts)
-keymap.set("n", "tw", ":tabclose<Return>", opts)
+keymap.set("n", "cb", ":bd<Return>", opts)
 
 -- Split window
 keymap.set("n", "ss", ":split<Return>", opts)
