@@ -18,6 +18,11 @@ keymap.set("x", "<leader>p", '"_dP')
 
 keymap.set("n", "x", '"_x')
 
+vim.keymap.set("n", "f", ":noh<CR>f", { silent = true })
+vim.keymap.set("n", "F", ":noh<CR>F", { silent = true })
+vim.keymap.set("n", "t", ":noh<CR>t", { silent = true })
+vim.keymap.set("n", "T", ":noh<CR>T", { silent = true })
+
 -- Increment/decrement
 keymap.set("n", "+", "<C-a>")
 keymap.set("n", "-", "<C-x>")
@@ -29,7 +34,6 @@ keymap.set("n", "<C-a>", "gg<S-v>G")
 keymap.set("n", "te", ":tabedit")
 keymap.set("n", "<tab>", ":bnext<Return>", opts)
 keymap.set("n", "<s-tab>", ":bprev<Return>", opts)
-keymap.set("n", "cb", ":bd<Return>", opts)
 
 -- Split window
 keymap.set("n", "ss", ":split<Return>", opts)
