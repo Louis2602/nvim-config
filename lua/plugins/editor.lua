@@ -32,6 +32,7 @@ return {
           builtin.find_files({
             no_ignore = false,
             hidden = true,
+            find_command = { "rg", "--files", "--hidden", "-g", "!.git" },
           })
         end,
         desc = "Lists files in your current working directory, respects .gitignore",
@@ -124,6 +125,9 @@ return {
           layout_config = {
             preview_cutoff = 9999,
           },
+        },
+        find_files = {
+          hidden = true,
         },
       }
       opts.extensions = {
