@@ -1,14 +1,22 @@
 return {
   {
-    "EdenEast/nightfox.nvim",
-    lazy = false,
-    priority = 1000,
+    "shaunsingh/nord.nvim",
+    lazy = false, -- make sure we load this during startup if it is your main colorscheme
+    priority = 1000, -- make sure to load this before all the other start plugins
     config = function()
-      require("nightfox").setup({
-        options = {
-          transparent = true,
-        },
-      })
+      -- Example config in lua
+      vim.g.nord_contrast = true -- Make sidebars and popup menus like nvim-tree and telescope have a different background
+      vim.g.nord_borders = false -- Enable the border between verticaly split windows visable
+      vim.g.nord_disable_background = true -- Disable the setting of background color so that NeoVim can use your terminal background
+      vim.g.set_cursorline_transparent = false -- Set the cursorline transparent/visible
+      vim.g.nord_italic = false -- enables/disables italics
+      vim.g.nord_enable_sidebar_background = false -- Re-enables the background of the sidebar if you disabled the background of everything
+      vim.g.nord_uniform_diff_background = true -- enables/disables colorful backgrounds when used in diff mode
+      vim.g.nord_bold = false -- enables/disables bold
+
+      require("nord").set()
+
+      vim.g.nord_disable_background = true
     end,
   },
   {
@@ -109,14 +117,6 @@ return {
     config = function()
       local transparent = true -- set to true if you would like to enable transparency
 
-      local bg = "#011628"
-      local bg_dark = "#011423"
-      local bg_highlight = "#143652"
-      local bg_search = "#0A64AC"
-      local bg_visual = "#275378"
-      local fg = "#CBE0F0"
-      local fg_dark = "#B4D0E9"
-      local border = "#547998"
       require("tokyonight").setup({
         style = "night",
         transparent = transparent,
@@ -127,22 +127,6 @@ return {
           sidebars = transparent and "transparent" or "dark",
           floats = transparent and "transparent" or "dark",
         },
-        on_colors = function(colors)
-          colors.bg = bg
-          colors.bg_dark = transparent and colors.none or bg_dark
-          colors.bg_float = transparent and colors.none or bg_dark
-          colors.bg_highlight = bg_highlight
-          colors.bg_popup = bg_dark
-          colors.bg_search = bg_search
-          colors.bg_sidebar = transparent and colors.none or bg_dark
-          colors.bg_statusline = transparent and colors.none or bg_dark
-          colors.bg_visual = bg_visual
-          colors.border = border
-          colors.fg = fg
-          colors.fg_dark = fg_dark
-          colors.fg_float = fg
-          colors.fg_sidebar = fg_dark
-        end,
       })
     end,
   },
