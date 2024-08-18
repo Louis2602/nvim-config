@@ -12,24 +12,6 @@ return {
     "rcarriga/nvim-notify",
     enabled = false,
   },
-  -- buffer line
-  -- {
-  --   "akinsho/bufferline.nvim",
-  --   event = "VeryLazy",
-  --   version = "*",
-  --   keys = {
-  --     { "<Tab>", "<Cmd>BufferLineCycleNext<CR>", desc = "Next tab" },
-  --     { "<S-Tab>", "<Cmd>BufferLineCyclePrev<CR>", desc = "Prev tab" },
-  --   },
-  --   opts = {
-  --     options = {
-  --       mode = "buffers",
-  --       show_buffer_close_icons = true,
-  --       show_close_icon = false,
-  --       show_tab_indicators = false,
-  --     },
-  --   },
-  -- },
   -- filename
   {
     "b0o/incline.nvim",

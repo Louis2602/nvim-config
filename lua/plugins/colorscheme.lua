@@ -1,22 +1,33 @@
 return {
   {
-    "shaunsingh/nord.nvim",
-    lazy = false, -- make sure we load this during startup if it is your main colorscheme
-    priority = 1000, -- make sure to load this before all the other start plugins
+    "gbprod/nord.nvim",
+    lazy = false,
+    priority = 1000,
     config = function()
-      -- Example config in lua
-      vim.g.nord_contrast = true -- Make sidebars and popup menus like nvim-tree and telescope have a different background
-      vim.g.nord_borders = false -- Enable the border between verticaly split windows visable
-      vim.g.nord_disable_background = true -- Disable the setting of background color so that NeoVim can use your terminal background
-      vim.g.set_cursorline_transparent = false -- Set the cursorline transparent/visible
-      vim.g.nord_italic = false -- enables/disables italics
-      vim.g.nord_enable_sidebar_background = false -- Re-enables the background of the sidebar if you disabled the background of everything
-      vim.g.nord_uniform_diff_background = true -- enables/disables colorful backgrounds when used in diff mode
-      vim.g.nord_bold = false -- enables/disables bold
+      require("nord").setup({
+        transparent = true, -- Enable this to disable setting the background color
+        terminal_colors = true, -- Configure the colors used when opening a `:terminal` in Neovim
+        diff = { mode = "bg" }, -- enables/disables colorful backgrounds when used in diff mode. values : [bg|fg]
+        borders = true, -- Enable the border between verticaly split windows visible
+        errors = { mode = "bg" }, -- Display mode for errors and diagnostics
+        -- values : [bg|fg|none]
+        search = { theme = "vim" }, -- theme for highlighting search results
+        -- values : [vim|vscode]
+        styles = {
+          -- Style to be applied to different syntax groups
+          -- Value is any valid attr-list value for `:help nvim_set_hl`
+          comments = { italic = false },
+          keywords = {},
+          functions = {},
+          variables = {},
 
-      require("nord").set()
-
-      vim.g.nord_disable_background = true
+          -- To customize lualine/bufferline
+          bufferline = {
+            current = {},
+            modified = { italic = false },
+          },
+        },
+      })
     end,
   },
   {

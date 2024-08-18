@@ -5,8 +5,10 @@ return {
     "nvim-tree/nvim-web-devicons",
   },
   config = function()
-    -- vim.opt.linespace = 8
-
+    _G.__cached_neo_tree_selector = nil
+    _G.__get_selector = function()
+      return _G.__cached_neo_tree_selector
+    end
     require("bufferline").setup({
       options = {
         mode = "buffers", -- set to "tabs" to only show tabpages instead
@@ -36,6 +38,15 @@ return {
         enforce_regular_tabs = true,
         always_show_bufferline = true,
         show_tab_indicators = false,
+        offsets = {
+          {
+            filetype = "neo-tree",
+            raw = " %{%v:lua.__get_selector()%} ",
+            highlight = { sep = { link = "WinSeparator" } },
+            separator = "┃",
+            text = "File Explorer",
+          },
+        },
         indicator = {
           -- icon = '▎', -- this should be omitted if indicator style is not 'icon'
           style = "none", -- Options: 'icon', 'underline', 'none'
@@ -54,11 +65,6 @@ return {
           bold = true,
           italic = false,
         },
-        -- separator_selected = {},
-        -- tab_selected = {},
-        -- background = {},
-        -- indicator_selected = {},
-        -- fill = {},
       },
     })
 
