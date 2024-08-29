@@ -55,6 +55,7 @@ return {
           },
           always_show = { -- remains visible even if other settings would normally hide it
             ".gitignored",
+            ".env",
           },
           always_show_by_pattern = { -- uses glob style patterns
             ".env*",

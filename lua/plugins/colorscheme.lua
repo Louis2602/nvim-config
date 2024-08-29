@@ -1,5 +1,16 @@
 return {
   {
+    "scottmckendry/cyberdream.nvim",
+    lazy = false,
+    priority = 1000,
+    opts = function(_, opts)
+      opts.transparent = true
+      opts.italic_comments = false
+      opts.borderless_telescope = false
+      opts.terminal_colors = true
+    end,
+  },
+  {
     "ellisonleao/gruvbox.nvim",
     priority = 1000,
     config = function()

@@ -20,8 +20,8 @@ vim.api.nvim_create_autocmd("FileType", {
 vim.api.nvim_create_autocmd("ColorScheme", {
   pattern = "*",
   callback = function()
-    vim.api.nvim_set_hl(0, "Visual", { bg = "#3d4556", fg = "#CBE0F0" })
+    vim.api.nvim_set_hl(0, "Visual", { bg = "#3d4556" })
     vim.api.nvim_set_hl(0, "NormalFloat", { bg = "#191D24" })
-    vim.api.nvim_set_hl(0, "CursorLineNr", { fg = "#edb440", bg = "#1c1f20" })
+    vim.api.nvim_set_hl(0, "CursorLineNr", { fg = "#ff5ea0" })
   end,
 })
