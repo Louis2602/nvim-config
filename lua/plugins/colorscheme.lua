@@ -1,5 +1,67 @@
 return {
   {
+    "HoNamDuong/hybrid.nvim",
+    lazy = false,
+    priority = 1000,
+    config = function()
+      require("hybrid").setup({
+        terminal_colors = true,
+        undercurl = true,
+        underline = true,
+        bold = true,
+        italic = {
+          strings = false,
+          emphasis = false,
+          comments = false,
+          folds = false,
+        },
+        strikethrough = true,
+        inverse = true,
+        transparent = true,
+        overrides = function(hl, c)
+          local background = "#1C1F20"
+          hl.TelescopeNormal = {
+            fg = c.fg,
+            bg = background,
+          }
+          hl.TelescopeBorder = {
+            fg = c.float.border,
+            bg = c.bg,
+          }
+          hl.TelescopeTitle = {
+            fg = c.fg_hard,
+            bg = c.bg,
+            bold = true,
+          }
+        end,
+      })
+    end,
+  },
+  {
+    "craftzdog/solarized-osaka.nvim",
+    lazy = false,
+    priority = 1000,
+    config = function()
+      require("solarized-osaka").setup({
+        transparent = true,
+        terminal_colors = true,
+        styles = {
+          comments = { italic = false },
+          keywords = { italic = false },
+          functions = {},
+          variables = {},
+          -- Background styles. Can be "dark", "transparent" or "normal"
+          sidebars = "transparent", -- style for sidebars, see below
+          floats = "transparent", -- style for floating windows
+        },
+        sidebars = { "terminal", "help" }, -- Set a darker background on sidebar-like windows. For example: `["qf", "vista_kind", "terminal", "packer"]`
+        hide_inactive_statusline = false, -- Enabling this option, will hide inactive statuslines and replace them with a thin border instead. Should work with the standard **StatusLine** and **LuaLine**.
+        dim_inactive = false,
+        lualine_bold = false, -- When `true`, section headers in the lualine theme will be bold
+      })
+    end,
+  },
+  {
     "scottmckendry/cyberdream.nvim",
     lazy = false,
     priority = 1000,
@@ -11,108 +73,26 @@ return {
     end,
   },
   {
-    "ellisonleao/gruvbox.nvim",
-    priority = 1000,
-    config = function()
-      require("gruvbox").setup({
-        terminal_colors = true,
-        undercurl = true,
-        underline = true,
-        bold = true,
-        italic = {
-          strings = false,
-          emphasis = false,
-          comments = false,
-          operators = false,
-          folds = false,
-        },
-        strikethrough = true,
-        invert_selection = false,
-        invert_signs = false,
-        invert_tabline = false,
-        invert_intend_guides = false,
-        inverse = true, -- invert background for search, diffs, statuslines and errors
-        contrast = "hard", -- can be "hard", "soft" or empty string
-        palette_overrides = {},
-        overrides = {},
-        dim_inactive = false,
-        transparent_mode = true,
-      })
-    end,
-  },
-  {
-    "gbprod/nord.nvim",
-    lazy = false,
-    priority = 1000,
-    config = function()
-      require("nord").setup({
-        transparent = true, -- Enable this to disable setting the background color
-        terminal_colors = true, -- Configure the colors used when opening a `:terminal` in Neovim
-        diff = { mode = "bg" }, -- enables/disables colorful backgrounds when used in diff mode. values : [bg|fg]
-        borders = true, -- Enable the border between verticaly split windows visible
-        errors = { mode = "bg" }, -- Display mode for errors and diagnostics
-        -- values : [bg|fg|none]
-        search = { theme = "vim" }, -- theme for highlighting search results
-        -- values : [vim|vscode]
-        styles = {
-          -- Style to be applied to different syntax groups
-          -- Value is any valid attr-list value for `:help nvim_set_hl`
-          comments = { italic = false },
-          keywords = {},
-          functions = {},
-          variables = {},
-
-          -- To customize lualine/bufferline
-          bufferline = {
-            current = {},
-            modified = { italic = false },
-          },
-        },
-      })
-    end,
-  },
-  {
     "AlexvZyl/nordic.nvim",
     lazy = false,
     priority = 1000,
     config = function()
       require("nordic").setup({
-        -- Enable bold keywords.
         bold_keywords = false,
-        -- Enable italic comments.
         italic_comments = false,
-        -- Enable general editor background transparency.
-        transparent_bg = true,
-        -- Enable brighter float border.
+        transparent = true,
         bright_border = false,
-        -- Reduce the overall amount of blue in the theme (diverges from base Nord).
         reduced_blue = true,
-        -- Swap the dark background with the normal one.
         swap_backgrounds = false,
         telescope = {
-          -- Available styles: `classic`, `flat`.
           style = "classic",
         },
         leap = {
-          -- Dims the backdrop when using leap.
           dim_backdrop = false,
         },
         ts_context = {
-          -- Enables dark background for treesitter-context window
           dark_background = true,
         },
-      })
-    end,
-  },
-  {
-    "Mofiqul/vscode.nvim",
-    priority = 1000,
-    config = function()
-      require("vscode").setup({
-        transparent = true,
-        italic_comments = false,
-        underline_links = true,
-        disable_nvimtree_bg = true,
       })
     end,
   },
@@ -159,27 +139,7 @@ return {
     config = function()
       vim.g.sonokai_transparent_background = "1"
       vim.g.sonokai_enable_italic = "0"
-      vim.g.sonokai_style = "andromeda"
-    end,
-  },
-  {
-    "folke/tokyonight.nvim",
-    lazy = false,
-    priority = 1000,
-    config = function()
-      local transparent = true -- set to true if you would like to enable transparency
-
-      require("tokyonight").setup({
-        style = "night",
-        transparent = transparent,
-        terminal_colors = true,
-        styles = {
-          comments = { italic = false },
-          keywords = { italic = false },
-          sidebars = transparent and "transparent" or "dark",
-          floats = transparent and "transparent" or "dark",
-        },
-      })
+      vim.g.sonokai_style = "maia"
     end,
   },
   {
