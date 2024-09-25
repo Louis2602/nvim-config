@@ -40,43 +40,41 @@ return {
       inlay_hints = { enabled = false },
       ---@type lspconfig.options
       servers = {
-        cssls = {},
         tailwindcss = {
           root_dir = function(...)
-            return require("lspconfig.util").root_pattern(".git")(...)
+            return require("lspconfig.util").root_pattern("tailwind.config.js", "tailwind.config.ts", ".git")(...)
           end,
         },
         tsserver = {
           root_dir = function(...)
-            return require("lspconfig.util").root_pattern(".git")(...)
+            return require("lspconfig.util").root_pattern("tsconfig.json", "package.json", ".git")(...)
           end,
           single_file_support = false,
           settings = {
             typescript = {
               inlayHints = {
-                includeInlayParameterNameHints = "literal",
+                includeInlayParameterNameHints = "none",
                 includeInlayParameterNameHintsWhenArgumentMatchesName = false,
-                includeInlayFunctionParameterTypeHints = true,
+                includeInlayFunctionParameterTypeHints = false,
                 includeInlayVariableTypeHints = false,
-                includeInlayPropertyDeclarationTypeHints = true,
+                includeInlayPropertyDeclarationTypeHints = false,
                 includeInlayFunctionLikeReturnTypeHints = true,
-                includeInlayEnumMemberValueHints = true,
+                includeInlayEnumMemberValueHints = false,
               },
             },
             javascript = {
               inlayHints = {
-                includeInlayParameterNameHints = "all",
+                includeInlayParameterNameHints = "none",
                 includeInlayParameterNameHintsWhenArgumentMatchesName = false,
-                includeInlayFunctionParameterTypeHints = true,
-                includeInlayVariableTypeHints = true,
-                includeInlayPropertyDeclarationTypeHints = true,
+                includeInlayFunctionParameterTypeHints = false,
+                includeInlayVariableTypeHints = false,
+                includeInlayPropertyDeclarationTypeHints = false,
                 includeInlayFunctionLikeReturnTypeHints = true,
-                includeInlayEnumMemberValueHints = true,
+                includeInlayEnumMemberValueHints = false,
               },
             },
           },
         },
-        html = {},
         lua_ls = {
           enabled = false,
           single_file_support = true,
@@ -88,11 +86,6 @@ return {
               completion = {
                 workspaceWord = true,
                 callSnippet = "Both",
-              },
-              misc = {
-                parameters = {
-                  -- "--log-level=trace",
-                },
               },
               hint = {
                 enable = true,
@@ -143,7 +136,12 @@ return {
           },
         },
       },
-      setup = {},
+      setup = {
+        tsserver = function(_, opts)
+          require("typescript").setup({ server = opts })
+          return true
+        end,
+      },
     },
   },
   {
