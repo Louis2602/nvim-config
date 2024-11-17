@@ -1,74 +1,37 @@
 return {
   {
-    "HoNamDuong/hybrid.nvim",
+    "craftzdog/solarized-osaka.nvim",
     lazy = false,
     priority = 1000,
     config = function()
-      require("hybrid").setup({
+      require("solarized-osaka").setup({
+        transparent = true,
         terminal_colors = true,
-        undercurl = true,
-        underline = true,
-        bold = true,
-        italic = {
-          strings = false,
-          emphasis = false,
-          comments = false,
-          folds = false,
+        styles = {
+          comments = { italic = true },
+          keywords = { italic = true },
+          functions = {},
+          variables = {},
+          -- Background styles. Can be "dark", "transparent" or "normal"
+          sidebars = "transparent", -- style for sidebars, see below
+          floats = "transparent", -- style for floating windows
         },
-        strikethrough = true,
-        inverse = true,
-        transparent = true,
-        overrides = function(hl, c)
-          local background = "#1C1F20"
-          hl.TelescopeNormal = {
-            fg = c.fg,
-            bg = background,
-          }
-          hl.TelescopeBorder = {
-            fg = c.float.border,
-            bg = c.bg,
-          }
-          hl.TelescopeTitle = {
-            fg = c.fg_hard,
-            bg = c.bg,
-            bold = true,
-          }
-        end,
-      })
-    end,
-  },
-  {
-    "scottmckendry/cyberdream.nvim",
-    lazy = false,
-    priority = 1000,
-    opts = function(_, opts)
-      opts.transparent = true
-      opts.italic_comments = false
-      opts.borderless_telescope = false
-      opts.terminal_colors = true
-    end,
-  },
-  {
-    "AlexvZyl/nordic.nvim",
-    lazy = false,
-    priority = 1000,
-    config = function()
-      require("nordic").setup({
-        bold_keywords = false,
-        italic_comments = false,
-        transparent = true,
-        bright_border = false,
-        reduced_blue = true,
-        swap_backgrounds = false,
-        telescope = {
-          style = "classic",
-        },
-        leap = {
-          dim_backdrop = false,
-        },
-        ts_context = {
-          dark_background = true,
-        },
+        sidebars = { "qf", "help" }, -- Set a darker background on sidebar-like windows. For example: `["qf", "vista_kind", "terminal", "packer"]`
+        day_brightness = 0.3, -- Adjusts the brightness of the colors of the **Day** style. Number between 0 and 1, from dull to vibrant colors
+        hide_inactive_statusline = false, -- Enabling this option, will hide inactive statuslines and replace them with a thin border instead. Should work with the standard **StatusLine** and **LuaLine**.
+        dim_inactive = false, -- dims inactive windows
+        lualine_bold = false, -- When `true`, section headers in the lualine theme will be bold
+
+        --- You can override specific color groups to use other groups or a hex color
+        --- function will be called with a ColorScheme table
+        ---@param colors ColorScheme
+        on_colors = function(colors) end,
+
+        --- You can override specific highlights to use other groups or a hex color
+        --- function will be called with a Highlights and ColorScheme table
+        ---@param highlights Highlights
+        ---@param colors ColorScheme
+        on_highlights = function(highlights, colors) end,
       })
     end,
   },
@@ -183,6 +146,29 @@ return {
             enabled = true,
             indentscope_color = "",
           },
+        },
+      })
+    end,
+  },
+  {
+    "folke/tokyonight.nvim",
+    lazy = false,
+    priority = 1000,
+    opts = {},
+    config = function()
+      require("tokyonight").setup({
+        style = "night",
+        transparent = true,
+        terminal_colors = true,
+        -- disable italic for functions
+        styles = {
+          comments = { italic = false },
+          keywords = { italic = false },
+          functions = {},
+          variables = {},
+          -- Background styles. Can be "dark", "transparent" or "normal"
+          sidebars = "transparent", -- style for sidebars, see below
+          floats = "transparent", -- style for floating windows
         },
       })
     end,
