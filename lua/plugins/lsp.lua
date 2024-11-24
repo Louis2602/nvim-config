@@ -19,6 +19,8 @@ return {
         "gopls",
         "markdownlint",
         "markdown-toc",
+        "eslint-lsp",
+        "prettierd",
       })
     end,
   },

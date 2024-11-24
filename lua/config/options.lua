@@ -44,7 +44,7 @@ vim.opt.splitkeep = "cursor"
 vim.opt.cursorline = true
 vim.opt.cursorlineopt = "number"
 
--- vim.opt.guicursor = ""
+vim.opt.guicursor = ""
 vim.opt.clipboard = "unnamedplus"
 vim.opt.mouse = "a"
 
