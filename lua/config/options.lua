@@ -1,6 +1,9 @@
 -- optionally enable 24-bit colour
 vim.opt.termguicolors = true
 
+vim.opt.conceallevel = 0
+vim.opt.cmdheight = 0
+
 vim.scriptencoding = "utf-8"
 vim.opt.encoding = "utf-8"
 vim.opt.fileencoding = "utf-8"

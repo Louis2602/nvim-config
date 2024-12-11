@@ -17,11 +17,11 @@ vim.api.nvim_create_autocmd("FileType", {
 -- vim.api.nvim_command('autocmd TextYankPost * lua vim.highlight.on_yank {higroup="YP_Yank", timeout=0}')
 
 -- Change selection highlight
-vim.api.nvim_create_autocmd("ColorScheme", {
-  pattern = "*",
-  callback = function()
-    vim.api.nvim_set_hl(0, "Visual", { bg = "#3d4556" })
-    vim.api.nvim_set_hl(0, "NormalFloat", { bg = "#191D24" })
-    -- vim.api.nvim_set_hl(0, "CursorLineNr", { fg = "#7aa6da", bg = "#1C1F20" })
-  end,
-})
+-- vim.api.nvim_create_autocmd("ColorScheme", {
+--   pattern = "*",
+--   callback = function()
+--     vim.api.nvim_set_hl(0, "Visual", { bg = "#3d4556" })
+--     vim.api.nvim_set_hl(0, "NormalFloat", { bg = "#191D24" })
+--     vim.api.nvim_set_hl(0, "CursorLineNr", { fg = "#7aa6da", bg = "#1C1F20" })
+--   end,
+-- })
