@@ -1,4 +1,10 @@
 return {
+  {
+    "snacks.nvim",
+    opts = {
+      scroll = { enabled = false },
+    },
+  },
   -- Highlight colors
   {
     "echasnovski/mini.hipatterns",
